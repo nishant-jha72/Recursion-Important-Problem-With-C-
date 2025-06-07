@@ -1,0 +1,46 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+// void swap(string *str,int i,int j){
+//     char temp = str[i];
+//     str[i] = str[j];
+//     str[j] = temp;
+// }
+void reverse(string &str,int i,int j){
+    if(i > j){
+        return;
+    }
+    swap(str[i],str[j]);
+    i++;
+    j--;
+    return reverse(str,i,j);
+}
+bool checkPalindrome(string &str,int i , int j){
+    if(i > j){
+        return true;
+    }
+    if(str[i] != str[j]){
+        return false;
+    }
+    else{
+        i++;
+        j--;
+        return checkPalindrome(str,i,j);
+    }
+}
+int main() {
+    // Write C++ code here
+    string str;
+    cout << "Enter String" << endl;
+    cin >> str;
+    int i =0,j=str.size()-1;
+    // reverse(str,i,j);
+    // cout << str;
+    if(checkPalindrome(str,i,j)){
+        cout << "its a Palindrome string" << endl;
+    }
+    else {
+        cout << "Not a palindrome String" << endl;
+    }
+    return 0;
+}
